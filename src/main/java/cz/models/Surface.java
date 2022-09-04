@@ -1,4 +1,4 @@
-package models;
+package cz.models;
 
 public class Surface {
 

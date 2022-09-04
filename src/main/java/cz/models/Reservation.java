@@ -1,4 +1,4 @@
-package models;
+package cz.models;
 
 import java.sql.Time;
 import java.time.Duration;
