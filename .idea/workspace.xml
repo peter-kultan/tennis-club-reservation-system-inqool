@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: move classes from default package">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/Main.java" afterDir="false" />
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: implement main function to run spring boot">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/CourtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -35,22 +38,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/dev/tennis-club-reservation-system-inqool",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/tennis-club-reservation-system-inqool&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a9637e2c224282ac3dd27d045e3351d9&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="tennis-club-reservation-system-inqool" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cz.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +85,10 @@
       <updated>1662305750475</updated>
       <workItem from="1662305751713" duration="1473000" />
       <workItem from="1662309594820" duration="3618000" />
-      <workItem from="1662318365352" duration="1567000" />
+      <workItem from="1662318365352" duration="3472000" />
+      <workItem from="1662463344859" duration="2923000" />
+      <workItem from="1662552061069" duration="9754000" />
+      <workItem from="1662581799284" duration="4129000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add Surface model">
       <created>1662313258261</created>
@@ -98,7 +125,21 @@
       <option name="project" value="LOCAL" />
       <updated>1662321172920</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: add spring boot dependencies">
+      <created>1662321217479</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662321217479</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: implement main function to run spring boot">
+      <created>1662321285684</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662321285684</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +162,13 @@
     <MESSAGE value="feat: add Reservation model" />
     <MESSAGE value="feat: add User model" />
     <MESSAGE value="fix: move classes from default package" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: move classes from default package" />
+    <MESSAGE value="feat: add spring boot dependencies" />
+    <MESSAGE value="feat: implement main function to run spring boot" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: implement main function to run spring boot" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tennis_club_reservation_system_inqool$Main.ic" NAME="Main Coverage Results" MODIFIED="1662582051981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>cz.*</FILTER>
+    </SUITE>
   </component>
 </project>
