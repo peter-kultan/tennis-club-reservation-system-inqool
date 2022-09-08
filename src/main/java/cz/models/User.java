@@ -1,27 +1,36 @@
 package cz.models;
 
+import javax.persistence.*;
+
+@Entity(name = "u") // TODO: rename table
 public class User {
 
-    private int id;
-    private String phoneNumber;
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public User(int id, String phoneNumber, String name) {
-        this.id = id;
-        this.phoneNumber = phoneNumber;
-        this.name = name;
-    }
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String name;
 
     public User(String phoneNumber, String name) {
         this.phoneNumber = phoneNumber;
         this.name = name;
     }
 
-    public int getId() {
+    public User() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
+        if (this.id != null) {
+            throw new IllegalStateException("Id can't be changed");
+        }
         this.id = id;
     }
 

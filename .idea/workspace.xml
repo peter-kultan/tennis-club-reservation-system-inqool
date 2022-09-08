@@ -4,27 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add h2 database dependency">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/exceptions/DataAccessException.java" afterDir="false" />
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: removed service interface">
       <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/CourtRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/SurfaceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/UserRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/CourtRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/SurfaceRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/SurfaceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/UserRepositoryImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/CourtServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/SurfaceServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/SurfaceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/SurfaceRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/CourtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/CourtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/Service.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +106,7 @@
       <workItem from="1662463344859" duration="2923000" />
       <workItem from="1662552061069" duration="9754000" />
       <workItem from="1662581799284" duration="20279000" />
-      <workItem from="1662649623622" duration="8864000" />
+      <workItem from="1662649623622" duration="14792000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add Surface model">
       <created>1662313258261</created>
@@ -207,7 +199,70 @@
       <option name="project" value="LOCAL" />
       <updated>1662623322313</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: add database configuration">
+      <created>1662661366573</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661366573</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: add data jpa dependency">
+      <created>1662661396728</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661396728</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: add database structure">
+      <created>1662661474877</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661474877</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: add database structure">
+      <created>1662661497302</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661497302</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: add surface repository">
+      <created>1662661560445</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661560445</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat: add surface service">
+      <created>1662661582040</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661582040</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: add surface controller">
+      <created>1662661629626</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661629626</updated>
+    </task>
+    <task id="LOCAL-00021" summary="feat: add data access exception">
+      <created>1662661657277</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661657277</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fix: removed service interface">
+      <created>1662661682766</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1662661682766</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +293,15 @@
     <MESSAGE value="feat: add CourtController" />
     <MESSAGE value="feat: add CourtService" />
     <MESSAGE value="feat: add h2 database dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add h2 database dependency" />
+    <MESSAGE value="feat: add database configuration" />
+    <MESSAGE value="feat: add data jpa dependency" />
+    <MESSAGE value="feat: add database structure" />
+    <MESSAGE value="feat: add surface repository" />
+    <MESSAGE value="feat: add surface service" />
+    <MESSAGE value="feat: add surface controller" />
+    <MESSAGE value="feat: add data access exception" />
+    <MESSAGE value="fix: removed service interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: removed service interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
