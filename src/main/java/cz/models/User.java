@@ -2,7 +2,7 @@ package cz.models;
 
 import javax.persistence.*;
 
-@Entity(name = "u") // TODO: rename table
+@Entity(name = "users")
 public class User {
 
     @Id
