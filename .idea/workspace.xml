@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: implement main function to run spring boot">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/CourtService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add CourtService" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +81,7 @@
       <workItem from="1662318365352" duration="3472000" />
       <workItem from="1662463344859" duration="2923000" />
       <workItem from="1662552061069" duration="9754000" />
-      <workItem from="1662581799284" duration="4129000" />
+      <workItem from="1662581799284" duration="4442000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add Surface model">
       <created>1662313258261</created>
@@ -139,7 +132,42 @@
       <option name="project" value="LOCAL" />
       <updated>1662321285684</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: add service interface">
+      <created>1662622970963</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662622970963</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix: remove hourPrice from surface">
+      <created>1662623065085</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662623065085</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: add hourPrice to Court">
+      <created>1662623081897</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662623081897</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: add CourtController">
+      <created>1662623119390</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662623119390</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add CourtService">
+      <created>1662623130889</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1662623130889</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +192,12 @@
     <MESSAGE value="fix: move classes from default package" />
     <MESSAGE value="feat: add spring boot dependencies" />
     <MESSAGE value="feat: implement main function to run spring boot" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement main function to run spring boot" />
+    <MESSAGE value="feat: add service interface" />
+    <MESSAGE value="fix: remove hourPrice from surface" />
+    <MESSAGE value="feat: add hourPrice to Court" />
+    <MESSAGE value="feat: add CourtController" />
+    <MESSAGE value="feat: add CourtService" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add CourtService" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tennis_club_reservation_system_inqool$Main.ic" NAME="Main Coverage Results" MODIFIED="1662582051981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
