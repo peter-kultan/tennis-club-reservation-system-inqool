@@ -1,16 +1,20 @@
 package cz.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Court {
 
-    private int id;
-    private Surface surface;
-    private double hourPrice;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-    public Court(int id, Surface surface, double hourPrice) {
-        this.id = id;
-        this.surface = surface;
-        this.hourPrice = hourPrice;
-    }
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "surfaceId", referencedColumnName = "id")
+    private Surface surface;
+
+    @Column(name = "hourPrice")
+    private double hourPrice;
 
     public Court(Surface surface, double hourPrice) {
         this.surface = surface;
@@ -19,11 +23,14 @@ public class Court {
 
     public Court() {}
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
+        if(id != null) {
+            throw new IllegalStateException("Id can't be changed");
+        }
         this.id = id;
     }
 
