@@ -41,7 +41,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
                 }
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Failed to load surface with id: " + id);
+            throw new DataAccessException("Failed to load surface with id: " + id, ex);
         }
         return null;
     }
@@ -76,7 +76,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
             st.executeUpdate();
             try (var rs = st.getGeneratedKeys()) {
                 if (rs.getMetaData().getColumnCount() != 1) {
-                    throw new DataAccessException("Failed to fetch generated key: compound ke returned for surface: " + surface);
+                    throw new DataAccessException("Failed to fetch generated key: compound key returned for surface: " + surface);
                 }
                 if (rs.next()) {
                     surface.setId(rs.getInt(1));
@@ -99,7 +99,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
             throw new IllegalArgumentException("surface has null ID: " + surface);
         }
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("UPDATE surface set name = ? where id = ?")) {
+        var st = conn.prepareStatement("UPDATE surface SET name = ? WHERE id = ?")) {
             st.setString(1, surface.getName());
             st.setInt(2, surface.getId());
             int rowUpdated = st.executeUpdate();
