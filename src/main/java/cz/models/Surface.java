@@ -1,24 +1,32 @@
 package cz.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Surface {
 
-    public int id;
-    public String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public Surface(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @Column(name = "name")
+    private String name;
 
     public Surface(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public Surface() {
+    }
+
+    public Integer getId() {
         return id;
     }
 
     public void setId(int id) {
+        if (this.id != null) {
+            throw new IllegalStateException("Id can't be changed");
+        }
         this.id = id;
     }
 
