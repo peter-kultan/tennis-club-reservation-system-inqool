@@ -2,16 +2,16 @@ package cz.models;
 
 public class Surface {
 
-    private int id;
-    private double hourPrice;
+    public int id;
+    public String name;
 
-    public Surface(int id, double hourPrice) {
+    public Surface(int id, String name) {
         this.id = id;
-        this.hourPrice = hourPrice;
+        this.name = name;
     }
 
-    public Surface(double hourPrice) {
-        this.hourPrice = hourPrice;
+    public Surface(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -22,19 +22,19 @@ public class Surface {
         this.id = id;
     }
 
-    public double getHourPrice() {
-        return hourPrice;
+    public String getName() {
+        return name;
     }
 
-    public void setHourPrice(double hourPrice) {
-        this.hourPrice = hourPrice;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
         return "Surface{" +
                 "id=" + id +
-                ", hourPrice=" + hourPrice +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
