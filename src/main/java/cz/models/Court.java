@@ -4,15 +4,20 @@ public class Court {
 
     private int id;
     private Surface surface;
+    private double hourPrice;
 
-    public Court(int id, Surface surface) {
+    public Court(int id, Surface surface, double hourPrice) {
         this.id = id;
         this.surface = surface;
+        this.hourPrice = hourPrice;
     }
 
-    public Court(Surface surface) {
+    public Court(Surface surface, double hourPrice) {
         this.surface = surface;
+        this.hourPrice = hourPrice;
     }
+
+    public Court() {}
 
     public int getId() {
         return id;
@@ -30,11 +35,20 @@ public class Court {
         this.surface = surface;
     }
 
+    public double getHourPrice() {
+        return hourPrice;
+    }
+
+    public void setHourPrice(double hourPrice) {
+        this.hourPrice = hourPrice;
+    }
+
     @Override
     public String toString() {
         return "Court{" +
                 "id=" + id +
                 ", surface=" + surface +
+                ", hourPrice=" + hourPrice +
                 '}';
     }
 }
