@@ -1,32 +1,18 @@
 package cz.services;
 
 import cz.models.Court;
+import cz.payload.CourtPostRequest;
 
 import java.util.Collection;
 
-public class CourtService implements Service<Court> {
-    @Override
-    public Collection<Court> getAllEntities() {
-        return null;
-    }
+public interface CourtService {
+    Collection<Court> getAllCourts();
 
-    @Override
-    public Collection<Court> getEntity(int id) {
-        return null;
-    }
+    Court getCourtById(int id);
 
-    @Override
-    public void addEntity(Court court) {
+    Court addCourt(CourtPostRequest court);
 
-    }
+    void updateCourt(Court court);
 
-    @Override
-    public void updateEntity(Court court) {
-
-    }
-
-    @Override
-    public void deleteEntity(int id) {
-
-    }
+    void deleteCourt(int id);
 }
