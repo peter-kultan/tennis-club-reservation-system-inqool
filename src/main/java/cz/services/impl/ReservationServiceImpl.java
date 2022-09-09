@@ -8,6 +8,7 @@ import cz.repositories.CourtRepository;
 import cz.repositories.ReservationRepository;
 import cz.repositories.UserRepository;
 import cz.services.ReservationService;
+import org.apache.tomcat.util.file.Matcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,9 @@ public class ReservationServiceImpl implements ReservationService {
         var court = courtRepository.findCourtById(reservation.getCourtId());
         if (court == null) {
             throw new IllegalArgumentException("New reservation with non-existing court");
+        }
+        if (!Matcher.match("^[+0-9]*[0-9]", reservation.getPhoneNumber(), false)) {
+            throw new IllegalArgumentException("Phone number is not valid");
         }
         var user = userRepository.findUserByPhoneNumber(reservation.getPhoneNumber());
         if (user == null) {
