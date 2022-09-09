@@ -88,7 +88,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
                 }
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Failed to store surface: " + surface);
+            throw new DataAccessException("Failed to store surface: " + surface, ex);
         }
     }
 
@@ -115,7 +115,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
     public void deleteSurface(int id) {
         var surface = findSurfaceById(id);
         if (surface == null) {
-            throw new IllegalStateException("surface with id: " + id + " does not exist");
+            throw new IllegalStateException("Surface with id: " + id + " does not exist");
         }
         try (var conn = DriverManager.getConnection(url, username, password);
         var st = conn.prepareStatement("DELETE FROM surface WHERE id = ?")) {
