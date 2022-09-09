@@ -39,9 +39,7 @@ public class SurfaceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteSurface(@PathVariable(name = "id") Integer id) {
+    public void deleteSurface(@PathVariable(name = "id") Integer id) {
         surfaceService.deleteSurface(id);
-        // TODO: return
-        return null;
     }
 }
