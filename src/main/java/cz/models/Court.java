@@ -2,11 +2,12 @@ package cz.models;
 
 import javax.persistence.*;
 
+// TODO: fix quotation in toString
 @Entity
 public class Court {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -28,7 +29,7 @@ public class Court {
     }
 
     public void setId(Integer id) {
-        if(id != null) {
+        if(this.id != null) {
             throw new IllegalStateException("Id can't be changed");
         }
         this.id = id;
