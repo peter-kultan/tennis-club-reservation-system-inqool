@@ -1,38 +1,45 @@
 package cz.controllers;
 
 import cz.models.Court;
-import cz.models.Surface;
+import cz.payload.CourtPostRequest;
+import cz.services.CourtService;
+    import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/courts")
 public class CourtController {
 
+    @Autowired
+    private CourtService courtService;
+
     @GetMapping("/{id}")
     public ResponseEntity<Court> getCourtById(@PathVariable(name = "id") Integer id) {
-        return new ResponseEntity<>(new Court(15, new Surface(""), 2.25), HttpStatus.OK);
+        return new ResponseEntity<>(courtService.getCourtById(id), HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<Court> getAllCourts() {
-        return new ResponseEntity<>(new Court(new Surface(""), 2.40), HttpStatus.OK);
+    public ResponseEntity<Collection<Court>> getAllCourts() {
+        return new ResponseEntity<>(courtService.getAllCourts(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Object> addCourt(@RequestBody Court newCourt) {
-        return new ResponseEntity<>(newCourt, HttpStatus.CREATED);
+    public ResponseEntity<Court> addCourt(@RequestBody CourtPostRequest newCourt) {
+        return new ResponseEntity<>(courtService.addCourt(newCourt), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Court> updateCourt(@PathVariable(name = "id") Integer id,
-                                             @RequestBody Court court) {
-        return new ResponseEntity<>(new Court(new Surface("Sand"), 2.25), HttpStatus.OK);
+    @PutMapping
+    public ResponseEntity<Court> updateCourt(@RequestBody Court court) {
+        courtService.updateCourt(court);
+        return new ResponseEntity<>(court, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCourt(@PathVariable(name = "id") Integer id) {
-        return new ResponseEntity<>(HttpStatus.OK);
+    public void deleteCourt(@PathVariable(name = "id") Integer id) {
+        courtService.deleteCourt(id);
     }
 }
