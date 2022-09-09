@@ -50,7 +50,23 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUserByPhoneNumber(String phoneNumber) {
-        // TODO: neviem ci budem tahat z databazy, mozno budem filtrovat v service, alebo tu cez quarrynu
+        try (var conn = DriverManager.getConnection(url, username, password);
+             var st = conn.prepareStatement("SELECT id, name FROM users WHERE phone_number = ?")) {
+            st.setString(1, phoneNumber);
+            try (var rs = st.executeQuery()) {
+                if (rs.next()) {
+                    var user = new User(phoneNumber,
+                            rs.getString("name"));
+                    user.setId(rs.getInt("id"));
+                    if (rs.next()) {
+                        throw new DataAccessException("Multiple users with phone number: " + phoneNumber + " found");
+                    }
+                    return user;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DataAccessException("Failed to load user with phone number: " + phoneNumber, ex);
+        }
         return null;
     }
 
