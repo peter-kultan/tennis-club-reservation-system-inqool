@@ -1,40 +1,56 @@
 package cz.models;
 
+import cz.enums.ReservationType;
+
+import javax.persistence.*;
 import java.sql.Time;
 import java.time.Duration;
 import java.util.Date;
 
+@Entity
 public class Reservation {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "courtId", referencedColumnName = "id")
     private Court court;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
+
     private Date startDate;
+
     private Time startTime;
+
     private Duration duration;
 
-    public Reservation(int id, Court court, User user, Date startDate, Time startTime, Duration duration) {
-        this.id = id;
+    private ReservationType reservationType;
+
+    public Reservation(Court court, User user, Date startDate, Time startTime, Duration duration,
+                       ReservationType reservationType) {
         this.court = court;
         this.user = user;
         this.startDate = startDate;
         this.startTime = startTime;
         this.duration = duration;
+        this.reservationType = reservationType;
     }
 
-    public Reservation(Court court, User user, Date startDate, Time startTime, Duration duration) {
-        this.court = court;
-        this.user = user;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.duration = duration;
+    public Reservation() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
+        if (this.id != null) {
+            throw new IllegalArgumentException("Id can't be changed");
+        }
         this.id = id;
     }
 
@@ -78,6 +94,14 @@ public class Reservation {
         this.duration = duration;
     }
 
+    public ReservationType getReservationType() {
+        return reservationType;
+    }
+
+    public void setReservationType(ReservationType reservationType) {
+        this.reservationType = reservationType;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
@@ -87,6 +111,7 @@ public class Reservation {
                 ", startDate=" + startDate +
                 ", startTime=" + startTime +
                 ", duration=" + duration +
+                ", reservationType=" + reservationType +
                 '}';
     }
 }
