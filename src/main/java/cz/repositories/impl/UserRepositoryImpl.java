@@ -29,7 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findUserById(int id) {
         try (var conn = DriverManager.getConnection(url, username, password);
-                         var st = conn.prepareStatement("SELECT id, name FROM users WHERE id = ?")) {
+                         var st = conn.prepareStatement("SELECT id, phone_number, name FROM users WHERE id = ?")) {
             st.setInt(1, id);
             try (var rs = st.executeQuery()) {
                 if (rs.next()) {
