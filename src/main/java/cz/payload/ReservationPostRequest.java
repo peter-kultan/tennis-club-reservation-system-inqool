@@ -15,19 +15,16 @@ public class ReservationPostRequest {
 
     private final Date startDate;
 
-    private final Time startTime;
-
     private final int duration;
 
     private final ReservationType reservationType;
 
-    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, Date startDate, Time startTime,
+    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, Date startDate,
                                   int duration, ReservationType reservationType) {
         this.courtId = courtId;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
         this.startDate = startDate;
-        this.startTime = startTime;
         this.duration = duration;
         this.reservationType = reservationType;
     }
@@ -46,10 +43,6 @@ public class ReservationPostRequest {
 
     public Date getStartDate() {
         return startDate;
-    }
-
-    public Time getStartTime() {
-        return startTime;
     }
 
     public int getDuration() {

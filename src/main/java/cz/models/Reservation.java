@@ -3,7 +3,6 @@ package cz.models;
 import cz.enums.ReservationType;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.Duration;
 import java.util.Date;
 
@@ -22,20 +21,18 @@ public class Reservation {
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 
+    @Column(columnDefinition = "long")
     private Date startDate;
-
-    private Time startTime;
 
     private Duration duration;
 
     private ReservationType reservationType;
 
-    public Reservation(Court court, User user, Date startDate, Time startTime, Duration duration,
+    public Reservation(Court court, User user, Date startDate, Duration duration,
                        ReservationType reservationType) {
         this.court = court;
         this.user = user;
         this.startDate = startDate;
-        this.startTime = startTime;
         this.duration = duration;
         this.reservationType = reservationType;
     }
@@ -78,14 +75,6 @@ public class Reservation {
         this.startDate = startDate;
     }
 
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
     public Duration getDuration() {
         return duration;
     }
@@ -109,7 +98,6 @@ public class Reservation {
                 ", court=" + court +
                 ", user=" + user +
                 ", startDate=" + startDate +
-                ", startTime=" + startTime +
                 ", duration=" + duration +
                 ", reservationType=" + reservationType +
                 '}';

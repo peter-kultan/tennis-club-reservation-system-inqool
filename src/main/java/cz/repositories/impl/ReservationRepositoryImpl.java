@@ -41,14 +41,13 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     @Override
     public Reservation findReservationById(int id) {
         try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date, start_time, duration, reservation_type FROM reservation WHERE id = ?")) {
+             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date, duration, reservation_type FROM reservation WHERE id = ?")) {
             st.setInt(1, id);
             var rs = st.executeQuery();
             if (rs.next()) {
                 var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("user_id")),
                         userRepository.findUserById(rs.getInt("user_id")),
-                        rs.getDate("start_date"),
-                        rs.getTime("start_time"),
+                        new Date(rs.getLong("start_date")),
                         Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
                         rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
                 reservation.setId(rs.getInt("id"));
@@ -66,15 +65,14 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     @Override
     public Collection<Reservation> findAllReservations() {
         try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date, start_time," +
+             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date," +
                      " duration, reservation_type FROM reservation")) {
             List<Reservation> reservations = new ArrayList<>();
             var rs = st.executeQuery();
             while (rs.next()) {
                 var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("user_id")),
                         userRepository.findUserById(rs.getInt("user_id")),
-                        rs.getDate("start_date"),
-                        rs.getTime("start_time"),
+                        new Date(rs.getLong("start_date")),
                         Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
                         rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
                 reservation.setId(rs.getInt("id"));
@@ -92,14 +90,13 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         }
         try (var conn = DriverManager.getConnection(url, username, password);
              var st = conn.prepareStatement("INSERT INTO reservation(court_id, user_id, start_date, " +
-                             "start_time, duration, reservation_type) VALUES (?, ?, ?, ?, ?, ?) ",
+                             "duration, reservation_type) VALUES (?, ?, ?, ?, ?) ",
                      Statement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, reservation.getCourt().getId());
             st.setInt(2, reservation.getUser().getId());
-            st.setDate(3, new Date(reservation.getStartDate().getTime()));
-            st.setTime(4, reservation.getStartTime());
-            st.setLong(5, reservation.getDuration().toMinutes());
-            st.setInt(6, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
+            st.setLong(3, new Date(reservation.getStartDate().getTime()).getTime());
+            st.setLong(4, reservation.getDuration().toMinutes());
+            st.setInt(5, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
             st.executeUpdate();
 
             try (var rs = st.getGeneratedKeys()) {
@@ -127,11 +124,10 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         }
         try (var conn = DriverManager.getConnection(url, username, password);
              var st = conn.prepareStatement("UPDATE reservation SET court_id = ?, user_id = ?," +
-                     " start_date = ?, start_time = ?, duration = ?, reservation_type = ? WHERE id = ?")) {
+                     " start_date = ?, duration = ?, reservation_type = ? WHERE id = ?")) {
             st.setInt(1, reservation.getCourt().getId());
             st.setInt(2, reservation.getUser().getId());
-            st.setDate(3, new Date(reservation.getStartDate().getTime()));
-            st.setTime(4, reservation.getStartTime());
+            st.setLong(3, reservation.getStartDate().getTime());
             st.setLong(5, reservation.getDuration().toMinutes());
             st.setInt(6, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
             int rowUpdated = st.executeUpdate();

@@ -45,9 +45,21 @@ public class ReservationServiceImpl implements ReservationService {
         if (court == null) {
             throw new IllegalArgumentException("New reservation with non-existing court");
         }
-        if (!Matcher.match("^[+0-9]*[0-9]", reservation.getPhoneNumber(), false)) {
+
+        String allCountryRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+
+        if (Matcher.match(allCountryRegex, reservation.getPhoneNumber(), true)) {
             throw new IllegalArgumentException("Phone number is not valid");
         }
+
+
+        var overlap = reservationRepository.findAllReservations().stream().filter(res -> Objects.equals(res.getCourt().getId(), reservation.getCourtId()))
+                .anyMatch(res -> (res.getStartDate().getTime()<= reservation.getStartDate().getTime() + res.getDuration().get(ChronoUnit.MILLIS)) &&
+                                (res.getStartDate().getTime() + res.getDuration().get(ChronoUnit.MILLIS) <= reservation.getStartDate().getTime()));
+        if (overlap) {
+            throw new IllegalArgumentException("There is overlap with existing reservation");
+        }
+
         var user = userRepository.findUserByPhoneNumber(reservation.getPhoneNumber());
         if (user == null) {
             user = new User(reservation.getPhoneNumber(), reservation.getUserName());
@@ -55,8 +67,9 @@ public class ReservationServiceImpl implements ReservationService {
         } else if (!Objects.equals(user.getName(), reservation.getUserName())) {
             throw new IllegalArgumentException("Phone number is paired with different name");
         }
+
         var newReservation = new Reservation(
-                court, user, reservation.getStartDate(), reservation.getStartTime(),
+                court, user, reservation.getStartDate(),
                 Duration.of(reservation.getDuration(), ChronoUnit.MINUTES), reservation.getReservationType());
         reservationRepository.createReservation(newReservation);
         return newReservation.getCourt().getHourPrice() * (newReservation.getDuration().toMinutes() / 60.00) *
