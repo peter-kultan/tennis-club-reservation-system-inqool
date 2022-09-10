@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add JUnit dependency">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/utils/TestDataGenerator.java" afterDir="false" />
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add test data generator">
       <change afterPath="$PROJECT_DIR$/src/test/java/cz/controllers/SurfaceControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application-integrationtest.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/payload/ReservationPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/payload/ReservationPostRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/impl/SurfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/SurfaceServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +165,7 @@
       <workItem from="1662581799284" duration="20279000" />
       <workItem from="1662649623622" duration="26670000" />
       <workItem from="1662710356421" duration="1710000" />
-      <workItem from="1662712229741" duration="36088000" />
+      <workItem from="1662712229741" duration="36391000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add Surface model">
       <created>1662313258261</created>
@@ -477,7 +468,42 @@
       <option name="project" value="LOCAL" />
       <updated>1662721219742</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="fix: changed reservation start date database type">
+      <created>1662824529228</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824529228</updated>
+    </task>
+    <task id="LOCAL-00045" summary="feat: add database configuration for tests">
+      <created>1662824546870</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824546870</updated>
+    </task>
+    <task id="LOCAL-00046" summary="feat: add Ignore id by json serializer when is null">
+      <created>1662824599860</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824599860</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fix: fix sql query">
+      <created>1662824648382</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824648382</updated>
+    </task>
+    <task id="LOCAL-00048" summary="feat: add test data generator">
+      <created>1662824677655</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1662824677655</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,11 +521,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add surface service" />
-    <MESSAGE value="feat: add surface controller" />
-    <MESSAGE value="feat: add data access exception" />
-    <MESSAGE value="fix: removed service interface" />
-    <MESSAGE value="feat: add user repository" />
     <MESSAGE value="feat: add database structure to user" />
     <MESSAGE value="fix: fix miss spelling, add cause to exception trow" />
     <MESSAGE value="fix: remove unnecessary name of column in database" />
@@ -520,7 +541,12 @@
     <MESSAGE value="feat: add court repository" />
     <MESSAGE value="feat: add phone number validation" />
     <MESSAGE value="feat: add JUnit dependency" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add JUnit dependency" />
+    <MESSAGE value="fix: changed reservation start date database type" />
+    <MESSAGE value="feat: add database configuration for tests" />
+    <MESSAGE value="feat: add Ignore id by json serializer when is null" />
+    <MESSAGE value="fix: fix sql query" />
+    <MESSAGE value="feat: add test data generator" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add test data generator" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tennis_club_reservation_system_inqool$Main.ic" NAME="Main Coverage Results" MODIFIED="1662582051981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -37,6 +37,6 @@ public class SurfaceServiceImpl implements SurfaceService {
 
     @Override
     public void deleteSurface(int id) {
-
+        surfaceRepository.deleteSurface(id);
     }
 }
