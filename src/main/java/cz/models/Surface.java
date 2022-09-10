@@ -1,12 +1,16 @@
 package cz.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Surface {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Integer id;
 
     private String name;
@@ -43,5 +47,18 @@ public class Surface {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Surface surface = (Surface) o;
+        return Objects.equals(id, surface.id) && Objects.equals(name, surface.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
