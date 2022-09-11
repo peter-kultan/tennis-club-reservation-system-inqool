@@ -63,6 +63,7 @@ public class CourtRepositoryImpl implements CourtRepository {
                     var court = new Court(surfaceRepository.findSurfaceById(rs.getInt("surface_id")),
                             rs.getDouble("hour_price"));
                     court.setId(rs.getInt("id"));
+                    courts.add(court);
                 }
                 return courts;
             }
