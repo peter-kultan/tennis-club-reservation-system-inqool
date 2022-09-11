@@ -1,6 +1,7 @@
 package cz.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 // TODO: fix quotation in toString
 @Entity
@@ -58,5 +59,18 @@ public class Court {
                 ", surface=" + surface +
                 ", hourPrice=" + hourPrice +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Court court = (Court) o;
+        return Double.compare(court.hourPrice, hourPrice) == 0 && Objects.equals(id, court.id) && Objects.equals(surface, court.surface);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, surface, hourPrice);
     }
 }
