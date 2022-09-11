@@ -62,7 +62,7 @@ public class TestDataGenerator {
         return new Court(surface, price);
     }
 
-    public List<Court> creteTestCourts(int count) {
+    public List<Court> createTestCourts(int count) {
         return Stream.generate(this::createTestCourt).limit(count).collect(Collectors.toList());
     }
 
