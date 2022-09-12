@@ -80,6 +80,7 @@ public class UserRepositoryImpl implements UserRepository {
                     var user = new User(rs.getString("phone_number"),
                             rs.getString("name"));
                     user.setId(rs.getInt("id"));
+                    users.add(user);
                 }
                 return users;
             }
