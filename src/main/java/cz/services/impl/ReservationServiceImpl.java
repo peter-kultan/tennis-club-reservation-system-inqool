@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Objects;
@@ -54,8 +55,8 @@ public class ReservationServiceImpl implements ReservationService {
 
 
         var overlap = reservationRepository.findAllReservations().stream().filter(res -> Objects.equals(res.getCourt().getId(), reservation.getCourtId()))
-                .anyMatch(res -> (res.getStartDate().getTime()<= reservation.getStartDate().getTime() + res.getDuration().get(ChronoUnit.MILLIS)) &&
-                                (res.getStartDate().getTime() + res.getDuration().get(ChronoUnit.MILLIS) <= reservation.getStartDate().getTime()));
+                .anyMatch(res -> (!res.getStartDateTime().isAfter(LocalDateTime.parse(reservation.getStartDate()).plusMinutes(reservation.getDuration()))) &&
+                        !res.getStartDateTime().plusMinutes(res.getDuration().toMinutes()).isAfter(LocalDateTime.parse(reservation.getStartDate())));
         if (overlap) {
             throw new IllegalArgumentException("There is overlap with existing reservation");
         }
@@ -69,7 +70,7 @@ public class ReservationServiceImpl implements ReservationService {
         }
 
         var newReservation = new Reservation(
-                court, user, reservation.getStartDate(),
+                court, user, LocalDateTime.parse(reservation.getStartDate()),
                 Duration.of(reservation.getDuration(), ChronoUnit.MINUTES), reservation.getReservationType());
         reservationRepository.createReservation(newReservation);
         return newReservation.getCourt().getHourPrice() * (newReservation.getDuration().toMinutes() / 60.00) *
