@@ -9,6 +9,9 @@ import cz.models.User;
 
 import java.sql.Date;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
@@ -79,10 +82,16 @@ public class TestDataGenerator {
     public Reservation createTestReservation() {
         var court = createTestCourt();
         var user = createTestUser();
-        var startDate = Date.valueOf("2022-10-10T15:20:00");
-        var duration = Duration.of(random.nextInt(2, 10), ChronoUnit.HOURS);
+
+        long minDay = LocalDate.now().toEpochDay();
+        long maxDay = LocalDate.of(2060, 12, 31).toEpochDay();
+        long randomDay = random.nextLong(minDay, maxDay);
+        var startDateTime = LocalDateTime.of(LocalDate.ofEpochDay(randomDay),
+                LocalTime.of(random.nextInt(0, 24), 0));
+
+        var duration = Duration.of(random.nextInt(30, 300), ChronoUnit.HOURS);
         var reservationType = selectRandom(Arrays.asList(ReservationType.values()));
-        return new Reservation(court, user, startDate, duration, reservationType);
+        return new Reservation(court, user, startDateTime, duration, reservationType);
     }
 
     public List<Reservation> createTestReservations(int count) {

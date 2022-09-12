@@ -4,7 +4,8 @@ import cz.enums.ReservationType;
 
 import javax.persistence.*;
 import java.time.Duration;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 public class Reservation {
@@ -21,18 +22,18 @@ public class Reservation {
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private User user;
 
-    @Column(columnDefinition = "long")
-    private Date startDate;
+    @Column(columnDefinition = "VARCHAR(255)")
+    private LocalDateTime startDateTime;
 
     private Duration duration;
 
     private ReservationType reservationType;
 
-    public Reservation(Court court, User user, Date startDate, Duration duration,
+    public Reservation(Court court, User user, LocalDateTime startDateTime, Duration duration,
                        ReservationType reservationType) {
         this.court = court;
         this.user = user;
-        this.startDate = startDate;
+        this.startDateTime = startDateTime;
         this.duration = duration;
         this.reservationType = reservationType;
     }
@@ -67,12 +68,12 @@ public class Reservation {
         this.user = user;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDateTime(LocalDateTime startDate) {
+        this.startDateTime = startDate;
     }
 
     public Duration getDuration() {
@@ -97,9 +98,22 @@ public class Reservation {
                 "id=" + id +
                 ", court=" + court +
                 ", user=" + user +
-                ", startDate=" + startDate +
+                ", startDate=" + startDateTime +
                 ", duration=" + duration +
                 ", reservationType=" + reservationType +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reservation that = (Reservation) o;
+        return Objects.equals(id, that.id) && Objects.equals(court, that.court) && Objects.equals(user, that.user) && Objects.equals(startDateTime, that.startDateTime) && Objects.equals(duration, that.duration) && reservationType == that.reservationType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, court, user, startDateTime, duration, reservationType);
     }
 }
