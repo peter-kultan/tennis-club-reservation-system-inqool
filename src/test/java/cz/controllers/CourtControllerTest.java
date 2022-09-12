@@ -5,7 +5,6 @@ import cz.models.Court;
 import cz.models.Surface;
 import cz.payload.CourtPostRequest;
 import cz.utils.TestDataGenerator;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,16 +33,11 @@ public class CourtControllerTest {
     @Autowired
     private CourtController controller;
 
-    private TestDataGenerator dataGenerator;
+    private final TestDataGenerator dataGenerator = new TestDataGenerator();
 
     private final String url = "/api/courts";
 
     private final ObjectMapper mapper = new ObjectMapper();
-
-    @Before
-    public void setUp() {
-        dataGenerator = new TestDataGenerator();
-    }
 
     @Test
     public void contextLoads() {

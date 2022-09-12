@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.models.Surface;
 import cz.utils.TestDataGenerator;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +31,11 @@ public class SurfaceControllerTest {
     @Autowired
     private SurfaceController controller;
 
-    private TestDataGenerator dataGenerator;
+    private final TestDataGenerator dataGenerator = new TestDataGenerator();
 
     private final String url = "/api/surfaces";
 
     private final ObjectMapper mapper = new ObjectMapper();
-
-    @Before
-    public void setUp() {
-        dataGenerator = new TestDataGenerator();
-    }
 
     @Test
     public void contextLoads() {
