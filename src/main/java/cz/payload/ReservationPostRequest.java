@@ -2,9 +2,6 @@ package cz.payload;
 
 import cz.enums.ReservationType;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class ReservationPostRequest {
 
     private final Integer courtId;
@@ -13,18 +10,18 @@ public class ReservationPostRequest {
 
     private final String userName;
 
-    private final Date startDate;
+    private final String startDateTime;
 
-    private final int duration;
+    private final long duration;
 
     private final ReservationType reservationType;
 
-    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, Date startDate,
-                                  int duration, ReservationType reservationType) {
+    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, String startDate,
+                                  long duration, ReservationType reservationType) {
         this.courtId = courtId;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
-        this.startDate = startDate;
+        this.startDateTime = startDate;
         this.duration = duration;
         this.reservationType = reservationType;
     }
@@ -41,11 +38,11 @@ public class ReservationPostRequest {
         return userName;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return startDateTime;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return duration;
     }
 
