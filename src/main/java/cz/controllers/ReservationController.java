@@ -28,8 +28,14 @@ public class ReservationController {
     }
 
     @PostMapping
-    public double addReservation(@RequestBody ReservationPostRequest newReservation) {
-        return reservationService.addReservation(newReservation);
+    public ResponseEntity<Double> addReservation(@RequestBody ReservationPostRequest newReservation) {
+        return new ResponseEntity<>(reservationService.addReservation(newReservation), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<HttpStatus> updateReservation(@RequestBody Reservation reservation) {
+        reservationService.updateReservation(reservation);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
