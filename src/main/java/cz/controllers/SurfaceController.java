@@ -51,7 +51,7 @@ public class SurfaceController {
     @PostMapping
     public ResponseEntity<Surface> addSurface(@RequestBody Surface newSurface) {
         surfaceService.addSurface(newSurface);
-        return new ResponseEntity<>(newSurface, HttpStatus.OK);
+        return new ResponseEntity<>(newSurface, HttpStatus.CREATED);
     }
 
     /**
@@ -69,7 +69,7 @@ public class SurfaceController {
     /**
      * Delete surface specified with id
      *
-     * @param id of surface to be delete from the surface
+     * @param id of surface to be deleted from the surface
      */
     @DeleteMapping("/{id}")
     public void deleteSurface(@PathVariable(name = "id") Integer id) {
