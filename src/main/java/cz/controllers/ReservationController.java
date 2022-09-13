@@ -77,7 +77,8 @@ public class ReservationController {
      * @param id of reservation to be deleted
      */
     @DeleteMapping("/{id}")
-    public void deleteSurface(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<HttpStatus> deleteSurface(@PathVariable(name = "id") Integer id) {
         reservationService.deleteReservation(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
