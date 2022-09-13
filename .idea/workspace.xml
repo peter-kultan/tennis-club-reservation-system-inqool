@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add reservation Controller test">
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add findReservationsByPhoneNumber to ReservationRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/ReservationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/ReservationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/ReservationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/ReservationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,28 +172,7 @@
       <workItem from="1662712229741" duration="36491000" />
       <workItem from="1662897968049" duration="9874000" />
       <workItem from="1662917839516" duration="1023000" />
-      <workItem from="1662987632883" duration="21914000" />
-    </task>
-    <task id="LOCAL-00017" summary="feat: add database structure">
-      <created>1662661497302</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661497302</updated>
-    </task>
-    <task id="LOCAL-00018" summary="feat: add surface repository">
-      <created>1662661560445</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661560445</updated>
-    </task>
-    <task id="LOCAL-00019" summary="feat: add surface service">
-      <created>1662661582040</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661582040</updated>
+      <workItem from="1662987632883" duration="29660000" />
     </task>
     <task id="LOCAL-00020" summary="feat: add surface controller">
       <created>1662661629626</created>
@@ -519,7 +496,28 @@
       <option name="project" value="LOCAL" />
       <updated>1663012373199</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="feat: add phone number param in get method">
+      <created>1663062599075</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1663062599075</updated>
+    </task>
+    <task id="LOCAL-00067" summary="feat: add getReservationsbyPhoneNumber">
+      <created>1663062614847</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1663062614847</updated>
+    </task>
+    <task id="LOCAL-00068" summary="feat: add findReservationsByPhoneNumber to ReservationRepository">
+      <created>1663062663948</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1663062663948</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,9 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add court repository" />
-    <MESSAGE value="feat: add phone number validation" />
-    <MESSAGE value="feat: add JUnit dependency" />
     <MESSAGE value="fix: changed reservation start date database type" />
     <MESSAGE value="feat: add database configuration for tests" />
     <MESSAGE value="feat: add Ignore id by json serializer when is null" />
@@ -562,7 +557,10 @@
     <MESSAGE value="fix: change methods to work with LocalDateTime" />
     <MESSAGE value="feat: add javaTimeModule to serialize and deserialize LocalDateTime" />
     <MESSAGE value="feat: add reservation Controller test" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add reservation Controller test" />
+    <MESSAGE value="feat: add phone number param in get method" />
+    <MESSAGE value="feat: add getReservationsByPhoneNumber to ReservationService" />
+    <MESSAGE value="feat: add findReservationsByPhoneNumber to ReservationRepository" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add findReservationsByPhoneNumber to ReservationRepository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -571,6 +569,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/cz/controllers/ReservationControllerTest.java</url>
           <line>194</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
