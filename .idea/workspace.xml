@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add findReservationsByPhoneNumber to ReservationRepository">
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: add return HttpStatus in deleteSurface in SurfaceController">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/ReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,9 +48,11 @@
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/dev/tennis-club-reservation-system-inqool",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.build",
     "spring.configuration.checksum": "a9637e2c224282ac3dd27d045e3351d9"
   },
   "keyToStringList": {
@@ -70,6 +71,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="All in tennis-club-reservation-system-inqool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tennis-club-reservation-system-inqool" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ReservationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tennis-club-reservation-system-inqool" />
       <extension name="coverage">
@@ -101,21 +110,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SurfaceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tennis-club-reservation-system-inqool" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cz.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="cz.controllers" />
-      <option name="MAIN_CLASS_NAME" value="cz.controllers.SurfaceControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="cz.controllers in tennis-club-reservation-system-inqool" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tennis-club-reservation-system-inqool" />
       <extension name="coverage">
@@ -131,6 +125,9 @@
       </method>
     </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="tennis-club-reservation-system-inqool" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cz.Main" />
       <extension name="coverage">
@@ -143,13 +140,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.All in tennis-club-reservation-system-inqool" />
+      <item itemvalue="JUnit.cz.controllers in tennis-club-reservation-system-inqool" />
+      <item itemvalue="JUnit.ReservationControllerTest" />
+      <item itemvalue="JUnit.ReservationControllerTest.deleteReservation" />
+      <item itemvalue="Spring Boot.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.All in tennis-club-reservation-system-inqool" />
         <item itemvalue="JUnit.cz.controllers in tennis-club-reservation-system-inqool" />
         <item itemvalue="JUnit.ReservationControllerTest" />
         <item itemvalue="JUnit.ReservationControllerTest.deleteReservation" />
-        <item itemvalue="JUnit.SurfaceControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -173,27 +177,8 @@
       <workItem from="1662897968049" duration="9874000" />
       <workItem from="1662917839516" duration="1023000" />
       <workItem from="1662987632883" duration="29660000" />
-    </task>
-    <task id="LOCAL-00020" summary="feat: add surface controller">
-      <created>1662661629626</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661629626</updated>
-    </task>
-    <task id="LOCAL-00021" summary="feat: add data access exception">
-      <created>1662661657277</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661657277</updated>
-    </task>
-    <task id="LOCAL-00022" summary="fix: removed service interface">
-      <created>1662661682766</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1662661682766</updated>
+      <workItem from="1663078371110" duration="52000" />
+      <workItem from="1663078578166" duration="5770000" />
     </task>
     <task id="LOCAL-00023" summary="feat: add user repository">
       <created>1662670097490</created>
@@ -517,7 +502,28 @@
       <option name="project" value="LOCAL" />
       <updated>1663062663948</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="fix: change version from 18 to 17">
+      <created>1663085417060</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1663085417060</updated>
+    </task>
+    <task id="LOCAL-00070" summary="fix: add return HttpStatus in deleteCourt in CourtRepository">
+      <created>1663085442030</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1663085442030</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fix: add return HttpStatus in deleteSurface in SurfaceController">
+      <created>1663085460291</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1663085460291</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,9 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix: changed reservation start date database type" />
-    <MESSAGE value="feat: add database configuration for tests" />
-    <MESSAGE value="feat: add Ignore id by json serializer when is null" />
     <MESSAGE value="fix: fix sql query" />
     <MESSAGE value="feat: add test data generator" />
     <MESSAGE value="feat: implement surface delete method" />
@@ -560,7 +563,10 @@
     <MESSAGE value="feat: add phone number param in get method" />
     <MESSAGE value="feat: add getReservationsByPhoneNumber to ReservationService" />
     <MESSAGE value="feat: add findReservationsByPhoneNumber to ReservationRepository" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add findReservationsByPhoneNumber to ReservationRepository" />
+    <MESSAGE value="fix: change version from 18 to 17" />
+    <MESSAGE value="fix: add return HttpStatus in deleteCourt in CourtRepository" />
+    <MESSAGE value="fix: add return HttpStatus in deleteSurface in SurfaceController" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: add return HttpStatus in deleteSurface in SurfaceController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
