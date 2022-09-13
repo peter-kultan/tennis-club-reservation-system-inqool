@@ -23,7 +23,10 @@ public class ReservationController {
     }
 
     @GetMapping
-    public ResponseEntity<Collection<Reservation>> getAllReservation() {
+    public ResponseEntity<Collection<Reservation>> getAllReservation(@RequestParam(required = false) String phoneNumber) {
+        if (phoneNumber != null) {
+            return new ResponseEntity<>(reservationService.getReservationsByPhoneNumber(phoneNumber), HttpStatus.OK);
+        }
         return new ResponseEntity<>(reservationService.getAllReservations(), HttpStatus.OK);
     }
 
