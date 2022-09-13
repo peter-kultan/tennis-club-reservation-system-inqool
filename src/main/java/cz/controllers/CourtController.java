@@ -72,7 +72,8 @@ public class CourtController {
      * @param id of court to be deleted
      */
     @DeleteMapping("/{id}")
-    public void deleteCourt(@PathVariable(name = "id") Integer id) {
+    public ResponseEntity<HttpStatus> deleteCourt(@PathVariable(name = "id") Integer id) {
         courtService.deleteCourt(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
