@@ -36,6 +36,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public Collection<Reservation> getReservationsByPhoneNumber(String phoneNumber) {
+        return reservationRepository.findReservationsByPhoneNumber(phoneNumber);
+    }
+
+    @Override
     public Reservation getReservationById(int id) {
         return reservationRepository.findReservationById(id);
     }
@@ -47,16 +52,15 @@ public class ReservationServiceImpl implements ReservationService {
             throw new IllegalArgumentException("New reservation with non-existing court");
         }
 
-        String allCountryRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
+        String allCountryPhoneNumberRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
 
-        if (Matcher.match(allCountryRegex, reservation.getPhoneNumber(), true)) {
+        if (Matcher.match(allCountryPhoneNumberRegex, reservation.getPhoneNumber(), true)) {
             throw new IllegalArgumentException("Phone number is not valid");
         }
 
-
         var overlap = reservationRepository.findAllReservations().stream().filter(res -> Objects.equals(res.getCourt().getId(), reservation.getCourtId()))
-                .anyMatch(res -> (!res.getStartDateTime().isAfter(LocalDateTime.parse(reservation.getStartDate()).plusMinutes(reservation.getDuration()))) &&
-                        !res.getStartDateTime().plusMinutes(res.getDuration().toMinutes()).isAfter(LocalDateTime.parse(reservation.getStartDate())));
+                .anyMatch(res -> (res.getStartDateTime().isBefore(LocalDateTime.parse(reservation.getStartDate()).plusMinutes(reservation.getDuration()))) &&
+                        res.getStartDateTime().plusMinutes(res.getDuration().toMinutes()).isAfter(LocalDateTime.parse(reservation.getStartDate())));
         if (overlap) {
             throw new IllegalArgumentException("There is overlap with existing reservation");
         }
