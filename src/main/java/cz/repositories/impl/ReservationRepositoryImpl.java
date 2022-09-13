@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Duration;
@@ -64,25 +65,45 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
+    public Collection<Reservation> findReservationsByPhoneNumber(String phoneNumber) {
+        var user = userRepository.findUserByPhoneNumber(phoneNumber);
+        if (user == null) {
+            return new ArrayList<>();
+        }
+        try (var conn = DriverManager.getConnection(url, username, password);
+             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," +
+                     " duration, reservation_type FROM reservation WHERE user_id = ?")) {
+            st.setInt(1, user.getId());
+            return getReservations(st);
+        } catch (SQLException ex) {
+            throw new DataAccessException("Failed to load all reservations", ex);
+        }
+    }
+
+    @Override
     public Collection<Reservation> findAllReservations() {
         try (var conn = DriverManager.getConnection(url, username, password);
              var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," +
                      " duration, reservation_type FROM reservation")) {
-            List<Reservation> reservations = new ArrayList<>();
-            var rs = st.executeQuery();
-            while (rs.next()) {
-                var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("user_id")),
-                        userRepository.findUserById(rs.getInt("user_id")),
-                        LocalDateTime.parse(rs.getString("start_date_time")),
-                        Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
-                        rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
-                reservation.setId(rs.getInt("id"));
-                reservations.add(reservation);
-            }
-            return reservations;
+            return getReservations(st);
         } catch (SQLException ex) {
             throw new DataAccessException("Failed to load all reservations", ex);
         }
+    }
+
+    private Collection<Reservation> getReservations(PreparedStatement st) throws SQLException {
+        List<Reservation> reservations = new ArrayList<>();
+        var rs = st.executeQuery();
+        while (rs.next()) {
+            var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("court_id")),
+                    userRepository.findUserById(rs.getInt("user_id")),
+                    LocalDateTime.parse(rs.getString("start_date_time")),
+                    Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
+                    rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
+            reservation.setId(rs.getInt("id"));
+            reservations.add(reservation);
+        }
+        return reservations;
     }
 
     @Override
@@ -94,11 +115,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
              var st = conn.prepareStatement("INSERT INTO reservation(court_id, user_id, start_date_time, " +
                              "duration, reservation_type) VALUES (?, ?, ?, ?, ?) ",
                      Statement.RETURN_GENERATED_KEYS)) {
-            st.setInt(1, reservation.getCourt().getId());
-            st.setInt(2, reservation.getUser().getId());
-            st.setString(3, reservation.getStartDateTime().toString());
-            st.setLong(4, reservation.getDuration().toMinutes());
-            st.setInt(5, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
+            prepareStatement(reservation, st);
             st.executeUpdate();
 
             try (var rs = st.getGeneratedKeys()) {
@@ -127,11 +144,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         try (var conn = DriverManager.getConnection(url, username, password);
              var st = conn.prepareStatement("UPDATE reservation SET court_id = ?, user_id = ?," +
                      " start_date_time = ?, duration = ?, reservation_type = ? WHERE id = ?")) {
-            st.setInt(1, reservation.getCourt().getId());
-            st.setInt(2, reservation.getUser().getId());
-            st.setString(3, reservation.getStartDateTime().toString());
-            st.setLong(4, reservation.getDuration().toMinutes());
-            st.setInt(5, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
+            prepareStatement(reservation, st);
             st.setInt(6, reservation.getId());
             int rowUpdated = st.executeUpdate();
             if (rowUpdated == 0) {
@@ -140,6 +153,14 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         } catch (SQLException ex) {
             throw new DataAccessException("Failed to update surface", ex);
         }
+    }
+
+    private void prepareStatement(Reservation reservation, PreparedStatement st) throws SQLException {
+        st.setInt(1, reservation.getCourt().getId());
+        st.setInt(2, reservation.getUser().getId());
+        st.setString(3, reservation.getStartDateTime().toString());
+        st.setLong(4, reservation.getDuration().toMinutes());
+        st.setInt(5, reservation.getReservationType() == ReservationType.Singles ? 1 : 2);
     }
 
     @Override

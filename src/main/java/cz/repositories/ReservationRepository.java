@@ -10,6 +10,8 @@ public interface ReservationRepository {
 
     Collection<Reservation> findAllReservations();
 
+    Collection<Reservation> findReservationsByPhoneNumber(String phoneNumber);
+
     void createReservation(Reservation reservation);
 
     void updateReservation(Reservation reservation);
