@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: format project">
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: fix quotation in toStrings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,33 +39,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/dev/tennis-club-reservation-system-inqool",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.build",
-    "spring.configuration.checksum": "a9637e2c224282ac3dd27d045e3351d9"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/tennis-club-reservation-system-inqool&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a9637e2c224282ac3dd27d045e3351d9&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "derby",
-      "h2"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;derby&quot;,
+      &quot;h2&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="cz.repositories" />
@@ -184,21 +183,8 @@
       <workItem from="1662987632883" duration="29660000" />
       <workItem from="1663078371110" duration="52000" />
       <workItem from="1663078578166" duration="7148000" />
-      <workItem from="1663231751398" duration="2397000" />
-    </task>
-    <task id="LOCAL-00026" summary="fix: remove unnecessary name of column in database">
-      <created>1662670584841</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1662670584841</updated>
-    </task>
-    <task id="LOCAL-00027" summary="fix: rename table of user table">
-      <created>1662670822193</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1662670822193</updated>
+      <workItem from="1663231751398" duration="3101000" />
+      <workItem from="1663236853931" duration="21000" />
     </task>
     <task id="LOCAL-00028" summary="fix: rename user table in database">
       <created>1662670937492</created>
@@ -529,7 +515,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663232895327</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="fix: fix quotation in toStrings">
+      <created>1663236523220</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1663236523220</updated>
+    </task>
+    <task id="LOCAL-00076" summary="fix: fix quotation in toStrings">
+      <created>1663236544929</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1663236544929</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: implements surface controller tests" />
     <MESSAGE value="feat: add equal and hashcode in court" />
     <MESSAGE value="fix: fix findAllCourts function" />
     <MESSAGE value="fix: fix function miss-spelling" />
@@ -572,7 +571,8 @@
     <MESSAGE value="fix: changed HttpStatus of addSurface from OK to Created" />
     <MESSAGE value="feat: add readme" />
     <MESSAGE value="fix: format project" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: format project" />
+    <MESSAGE value="fix: fix quotation in toStrings" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fix quotation in toStrings" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
