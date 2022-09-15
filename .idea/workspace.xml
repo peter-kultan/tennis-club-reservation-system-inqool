@@ -9,26 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: add readme">
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: format project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/CourtController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/controllers/SurfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/enums/ReservationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/enums/ReservationType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Court.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/Surface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/payload/ReservationPostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/payload/ReservationPostRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/CourtRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/CourtRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/ReservationRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/SurfaceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/SurfaceRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/repositories/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/services/impl/ReservationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/utils/TestDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/utils/TestDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cz/controllers/CourtControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cz/controllers/CourtControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cz/controllers/ReservationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cz/controllers/ReservationControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cz/controllers/SurfaceControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cz/controllers/SurfaceControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,14 +184,7 @@
       <workItem from="1662987632883" duration="29660000" />
       <workItem from="1663078371110" duration="52000" />
       <workItem from="1663078578166" duration="7148000" />
-      <workItem from="1663231751398" duration="1107000" />
-    </task>
-    <task id="LOCAL-00025" summary="fix: remove unnecessary name of column in database">
-      <created>1662670572377</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1662670572377</updated>
+      <workItem from="1663231751398" duration="2397000" />
     </task>
     <task id="LOCAL-00026" summary="fix: remove unnecessary name of column in database">
       <created>1662670584841</created>
@@ -546,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663085577853</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="fix: format project">
+      <created>1663232895327</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1663232895327</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: implement surface delete method" />
     <MESSAGE value="feat: implements surface controller tests" />
     <MESSAGE value="feat: add equal and hashcode in court" />
     <MESSAGE value="fix: fix findAllCourts function" />
@@ -589,7 +571,8 @@
     <MESSAGE value="fix: add return HttpStatus in deleteSurface in SurfaceController" />
     <MESSAGE value="fix: changed HttpStatus of addSurface from OK to Created" />
     <MESSAGE value="feat: add readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add readme" />
+    <MESSAGE value="fix: format project" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: format project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

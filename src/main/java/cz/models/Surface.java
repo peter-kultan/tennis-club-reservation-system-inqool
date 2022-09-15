@@ -46,7 +46,7 @@ public class Surface {
 
     @Override
     public String toString() {
-        return "Surface{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "Surface{" + "id=" + id + ", name='" + name + '\'' + "}";
     }
 
     @Override
