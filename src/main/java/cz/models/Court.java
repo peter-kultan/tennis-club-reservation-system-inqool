@@ -23,14 +23,15 @@ public class Court {
         this.hourPrice = hourPrice;
     }
 
-    public Court() {}
+    public Court() {
+    }
 
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
-        if(this.id != null) {
+        if (this.id != null) {
             throw new IllegalStateException("Id can't be changed");
         }
         this.id = id;
@@ -54,11 +55,7 @@ public class Court {
 
     @Override
     public String toString() {
-        return "Court{" +
-                "id=" + id +
-                ", surface=" + surface +
-                ", hourPrice=" + hourPrice +
-                '}';
+        return "Court{" + "id=" + id + ", surface=" + surface + ", hourPrice=" + hourPrice + '}';
     }
 
     @Override

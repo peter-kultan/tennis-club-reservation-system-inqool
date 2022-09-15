@@ -6,8 +6,6 @@ import cz.models.Reservation;
 import cz.models.Surface;
 import cz.models.User;
 
-
-import java.sql.Date;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,25 +25,25 @@ public class TestDataGenerator {
     private final List<List<String>> user =
             List.of(
                     List.of(
-                                    "+421852475324",
-                                    "+420855741963",
-                                    "+987521425368",
-                                    "+521785365854",
-                                    "0987584214",
-                                    "9824524857",
-                                    "9876543210",
-                                    "0123456789"
-                            ),
-                            List.of("Clark Dyer",
-                                    "Sultan Moreno",
-                                    "Mia Wallace",
-                                    "Simona Suarez",
-                                    "Jaeden Page",
-                                    "Saniya Puckett",
-                                    "Kayley Duke",
-                                    "Rihanna Dawe",
-                                    "Dakota Castro",
-                                    "Cem Crossley")
+                            "+421852475324",
+                            "+420855741963",
+                            "+987521425368",
+                            "+521785365854",
+                            "0987584214",
+                            "9824524857",
+                            "9876543210",
+                            "0123456789"
+                    ),
+                    List.of("Clark Dyer",
+                            "Sultan Moreno",
+                            "Mia Wallace",
+                            "Simona Suarez",
+                            "Jaeden Page",
+                            "Saniya Puckett",
+                            "Kayley Duke",
+                            "Rihanna Dawe",
+                            "Dakota Castro",
+                            "Cem Crossley")
             );
 
     private final Random random = new Random(654169874153241L);

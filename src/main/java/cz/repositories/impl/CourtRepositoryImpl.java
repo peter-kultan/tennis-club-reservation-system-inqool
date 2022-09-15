@@ -32,14 +32,11 @@ public class CourtRepositoryImpl implements CourtRepository {
 
     @Override
     public Court findCourtById(int id) {
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement(
-                     "SELECT id, surface_id, hour_price from court where id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, surface_id, hour_price from court where id = ?")) {
             st.setLong(1, id);
             try (var rs = st.executeQuery()) {
                 if (rs.next()) {
-                    var court = new Court(surfaceRepository.findSurfaceById(rs.getInt("surface_id")),
-                            rs.getDouble("hour_price"));
+                    var court = new Court(surfaceRepository.findSurfaceById(rs.getInt("surface_id")), rs.getDouble("hour_price"));
                     court.setId(id);
                     if (rs.next()) {
                         return null;
@@ -55,13 +52,11 @@ public class CourtRepositoryImpl implements CourtRepository {
 
     @Override
     public Collection<Court> findAllCourts() {
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, surface_id, hour_price FROM court")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, surface_id, hour_price FROM court")) {
             List<Court> courts = new ArrayList<>();
             try (var rs = st.executeQuery()) {
                 while (rs.next()) {
-                    var court = new Court(surfaceRepository.findSurfaceById(rs.getInt("surface_id")),
-                            rs.getDouble("hour_price"));
+                    var court = new Court(surfaceRepository.findSurfaceById(rs.getInt("surface_id")), rs.getDouble("hour_price"));
                     court.setId(rs.getInt("id"));
                     courts.add(court);
                 }
@@ -77,11 +72,7 @@ public class CourtRepositoryImpl implements CourtRepository {
         if (court.getId() != null) {
             throw new IllegalArgumentException("Court has already ID: " + court.getId());
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st =
-                     conn.prepareStatement(
-                             "INSERT INTO court(surface_id, hour_price) VALUES (?, ?)",
-                             Statement.RETURN_GENERATED_KEYS)) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("INSERT INTO court(surface_id, hour_price) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, court.getSurface().getId());
             st.setDouble(2, court.getHourPrice());
             st.executeUpdate();
@@ -109,8 +100,7 @@ public class CourtRepositoryImpl implements CourtRepository {
         if (court.getId() == null) {
             throw new IllegalArgumentException("court has null ID: " + court);
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("UPDATE court SET surface_id = ?, hour_price = ? WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("UPDATE court SET surface_id = ?, hour_price = ? WHERE id = ?")) {
             st.setInt(1, court.getSurface().getId());
             st.setDouble(2, court.getHourPrice());
             st.setInt(3, court.getId());
@@ -129,8 +119,7 @@ public class CourtRepositoryImpl implements CourtRepository {
         if (court == null) {
             throw new IllegalStateException("Court with id: " + id + " does not exist");
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("DELETE FROM court WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("DELETE FROM court WHERE id = ?")) {
             st.setInt(1, id);
             int rowDeleted = st.executeUpdate();
             if (rowDeleted == 0) {

@@ -28,13 +28,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUserById(int id) {
-        try (var conn = DriverManager.getConnection(url, username, password);
-                         var st = conn.prepareStatement("SELECT id, phone_number, name FROM users WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, phone_number, name FROM users WHERE id = ?")) {
             st.setInt(1, id);
             try (var rs = st.executeQuery()) {
                 if (rs.next()) {
-                    var user = new User(rs.getString("phone_number"),
-                            rs.getString("name"));
+                    var user = new User(rs.getString("phone_number"), rs.getString("name"));
                     user.setId(rs.getInt("id"));
                     if (rs.next()) {
                         throw new DataAccessException("Multiple users with id: " + id + " found");
@@ -50,13 +48,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUserByPhoneNumber(String phoneNumber) {
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, name FROM users WHERE phone_number = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, name FROM users WHERE phone_number = ?")) {
             st.setString(1, phoneNumber);
             try (var rs = st.executeQuery()) {
                 if (rs.next()) {
-                    var user = new User(phoneNumber,
-                            rs.getString("name"));
+                    var user = new User(phoneNumber, rs.getString("name"));
                     user.setId(rs.getInt("id"));
                     if (rs.next()) {
                         throw new DataAccessException("Multiple users with phone number: " + phoneNumber + " found");
@@ -72,13 +68,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Collection<User> findAllUsers() {
-        try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("SELECT id, phone_number, name FROM users")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, phone_number, name FROM users")) {
             List<User> users = new ArrayList<>();
             try (var rs = st.executeQuery()) {
                 while (rs.next()) {
-                    var user = new User(rs.getString("phone_number"),
-                            rs.getString("name"));
+                    var user = new User(rs.getString("phone_number"), rs.getString("name"));
                     user.setId(rs.getInt("id"));
                     users.add(user);
                 }
@@ -94,9 +88,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (user.getId() != null) {
             throw new IllegalStateException("User already has ID: " + user);
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("INSERT INTO users(phone_number, name) VALUES (?, ?)",
-                Statement.RETURN_GENERATED_KEYS)) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("INSERT INTO users(phone_number, name) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, user.getPhoneNumber());
             st.setString(2, user.getName());
             st.executeUpdate();
@@ -123,8 +115,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (user.getId() == null) {
             throw new IllegalStateException("User has null ID: " + user);
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("UPDATE users SET phone_number = ?, name = ? WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("UPDATE users SET phone_number = ?, name = ? WHERE id = ?")) {
             st.setString(1, user.getPhoneNumber());
             st.setString(2, user.getName());
             st.setInt(3, user.getId());
@@ -143,8 +134,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (user == null) {
             throw new IllegalStateException("user with id: " + id + " does not exist");
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("DELETE FROM users WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("DELETE FROM users WHERE id = ?")) {
             st.setInt(1, id);
             int rowDeleted = st.executeUpdate();
             if (rowDeleted == 0) {

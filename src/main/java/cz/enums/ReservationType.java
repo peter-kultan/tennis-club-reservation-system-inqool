@@ -1,6 +1,5 @@
 package cz.enums;
 
 public enum ReservationType {
-    Singles,
-    Doubles
+    Singles, Doubles
 }

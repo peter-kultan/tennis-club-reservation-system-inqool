@@ -4,7 +4,7 @@ import cz.exceptions.DataAccessException;
 import cz.models.Surface;
 import cz.repositories.SurfaceRepository;
 import org.springframework.beans.factory.annotation.Value;
-    import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
     @Override
     public Surface findSurfaceById(int id) {
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("SELECT id, name FROM surface WHERE id = ?")) {
+             var st = conn.prepareStatement("SELECT id, name FROM surface WHERE id = ?")) {
             st.setInt(1, id);
             try (var rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -49,7 +49,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
     @Override
     public Collection<Surface> findAllSurfaces() {
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("SELECT id, name FROM surface")) {
+             var st = conn.prepareStatement("SELECT id, name FROM surface")) {
             List<Surface> surfaces = new ArrayList<>();
             try (var rs = st.executeQuery()) {
                 while (rs.next()) {
@@ -70,8 +70,8 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
             throw new IllegalArgumentException("Surface already has ID: " + surface);
         }
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("INSERT INTO surface(name) VALUES (?)",
-                Statement.RETURN_GENERATED_KEYS)) {
+             var st = conn.prepareStatement("INSERT INTO surface(name) VALUES (?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, surface.getName());
             st.executeUpdate();
             try (var rs = st.getGeneratedKeys()) {
@@ -94,12 +94,11 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
 
     @Override
     public void updateSurface(Surface surface) {
-        if (surface.getId() == null)
-        {
+        if (surface.getId() == null) {
             throw new IllegalArgumentException("surface has null ID: " + surface);
         }
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("UPDATE surface SET name = ? WHERE id = ?")) {
+             var st = conn.prepareStatement("UPDATE surface SET name = ? WHERE id = ?")) {
             st.setString(1, surface.getName());
             st.setInt(2, surface.getId());
             int rowUpdated = st.executeUpdate();
@@ -118,7 +117,7 @@ public class SurfaceRepositoryImpl implements SurfaceRepository {
             throw new IllegalStateException("Surface with id: " + id + " does not exist");
         }
         try (var conn = DriverManager.getConnection(url, username, password);
-        var st = conn.prepareStatement("DELETE FROM surface WHERE id = ?")) {
+             var st = conn.prepareStatement("DELETE FROM surface WHERE id = ?")) {
             st.setInt(1, id);
             int rowDeleted = st.executeUpdate();
             if (rowDeleted == 0) {

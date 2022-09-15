@@ -58,9 +58,7 @@ public class ReservationServiceImpl implements ReservationService {
             throw new IllegalArgumentException("Phone number is not valid");
         }
 
-        var overlap = reservationRepository.findAllReservations().stream().filter(res -> Objects.equals(res.getCourt().getId(), reservation.getCourtId()))
-                .anyMatch(res -> (res.getStartDateTime().isBefore(LocalDateTime.parse(reservation.getStartDate()).plusMinutes(reservation.getDuration()))) &&
-                        res.getStartDateTime().plusMinutes(res.getDuration().toMinutes()).isAfter(LocalDateTime.parse(reservation.getStartDate())));
+        var overlap = reservationRepository.findAllReservations().stream().filter(res -> Objects.equals(res.getCourt().getId(), reservation.getCourtId())).anyMatch(res -> (res.getStartDateTime().isBefore(LocalDateTime.parse(reservation.getStartDate()).plusMinutes(reservation.getDuration()))) && res.getStartDateTime().plusMinutes(res.getDuration().toMinutes()).isAfter(LocalDateTime.parse(reservation.getStartDate())));
         if (overlap) {
             throw new IllegalArgumentException("There is overlap with existing reservation");
         }
@@ -73,12 +71,9 @@ public class ReservationServiceImpl implements ReservationService {
             throw new IllegalArgumentException("Phone number is paired with different name");
         }
 
-        var newReservation = new Reservation(
-                court, user, LocalDateTime.parse(reservation.getStartDate()),
-                Duration.of(reservation.getDuration(), ChronoUnit.MINUTES), reservation.getReservationType());
+        var newReservation = new Reservation(court, user, LocalDateTime.parse(reservation.getStartDate()), Duration.of(reservation.getDuration(), ChronoUnit.MINUTES), reservation.getReservationType());
         reservationRepository.createReservation(newReservation);
-        return newReservation.getCourt().getHourPrice() * (newReservation.getDuration().toMinutes() / 60.00) *
-                (newReservation.getReservationType() == ReservationType.Singles ? 1 : 1.5);
+        return newReservation.getCourt().getHourPrice() * (newReservation.getDuration().toMinutes() / 60.00) * (newReservation.getReservationType() == ReservationType.Singles ? 1 : 1.5);
     }
 
     @Override

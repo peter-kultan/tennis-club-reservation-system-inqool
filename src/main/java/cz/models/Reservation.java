@@ -29,8 +29,7 @@ public class Reservation {
 
     private ReservationType reservationType;
 
-    public Reservation(Court court, User user, LocalDateTime startDateTime, Duration duration,
-                       ReservationType reservationType) {
+    public Reservation(Court court, User user, LocalDateTime startDateTime, Duration duration, ReservationType reservationType) {
         this.court = court;
         this.user = user;
         this.startDateTime = startDateTime;
@@ -94,14 +93,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", court=" + court +
-                ", user=" + user +
-                ", startDate=" + startDateTime +
-                ", duration=" + duration +
-                ", reservationType=" + reservationType +
-                '}';
+        return "Reservation{" + "id=" + id + ", court=" + court + ", user=" + user + ", startDate=" + startDateTime + ", duration=" + duration + ", reservationType=" + reservationType + '}';
     }
 
     @Override

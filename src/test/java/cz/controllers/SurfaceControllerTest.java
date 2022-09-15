@@ -1,7 +1,5 @@
 package cz.controllers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.models.Surface;
 import cz.utils.TestDataGenerator;
@@ -17,6 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -25,17 +25,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class SurfaceControllerTest {
 
+    private final TestDataGenerator dataGenerator = new TestDataGenerator();
+    private final String url = "/api/surfaces";
+    private final ObjectMapper mapper = new ObjectMapper();
     @Autowired
     private MockMvc mvc;
-
     @Autowired
     private SurfaceController controller;
-
-    private final TestDataGenerator dataGenerator = new TestDataGenerator();
-
-    private final String url = "/api/surfaces";
-
-    private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
     public void contextLoads() {
@@ -48,7 +44,7 @@ public class SurfaceControllerTest {
         var result = mvc.perform(MockMvcRequestBuilders.post(url)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(surface))).andReturn();
-        assertThat(result.getResponse().getStatus()).isEqualTo(200);
+        assertThat(result.getResponse().getStatus()).isEqualTo(201);
         assertThat(surface.getId()).isNull();
     }
 
@@ -93,8 +89,8 @@ public class SurfaceControllerTest {
 
         surface.setName("newName");
         var result = mvc.perform(MockMvcRequestBuilders.put(url)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(surface)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(surface)))
                 .andReturn().getResponse();
 
         assertThat(result.getStatus()).isEqualTo(200);

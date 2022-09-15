@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -42,16 +41,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public Reservation findReservationById(int id) {
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time, duration, reservation_type FROM reservation WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time, duration, reservation_type FROM reservation WHERE id = ?")) {
             st.setInt(1, id);
             var rs = st.executeQuery();
             if (rs.next()) {
-                var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("user_id")),
-                        userRepository.findUserById(rs.getInt("user_id")),
-                        LocalDateTime.parse(rs.getString("start_date_time")),
-                        Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
-                        rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
+                var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("user_id")), userRepository.findUserById(rs.getInt("user_id")), LocalDateTime.parse(rs.getString("start_date_time")), Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES), rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
                 reservation.setId(rs.getInt("id"));
                 if (rs.next()) {
                     throw new DataAccessException("Multiple reservations with id: " + id + " found");
@@ -70,9 +64,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         if (user == null) {
             return new ArrayList<>();
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," +
-                     " duration, reservation_type FROM reservation WHERE user_id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," + " duration, reservation_type FROM reservation WHERE user_id = ?")) {
             st.setInt(1, user.getId());
             return getReservations(st);
         } catch (SQLException ex) {
@@ -82,9 +74,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public Collection<Reservation> findAllReservations() {
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," +
-                     " duration, reservation_type FROM reservation")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("SELECT id, court_id, user_id, start_date_time," + " duration, reservation_type FROM reservation")) {
             return getReservations(st);
         } catch (SQLException ex) {
             throw new DataAccessException("Failed to load all reservations", ex);
@@ -95,11 +85,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         List<Reservation> reservations = new ArrayList<>();
         var rs = st.executeQuery();
         while (rs.next()) {
-            var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("court_id")),
-                    userRepository.findUserById(rs.getInt("user_id")),
-                    LocalDateTime.parse(rs.getString("start_date_time")),
-                    Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES),
-                    rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
+            var reservation = new Reservation(courtRepository.findCourtById(rs.getInt("court_id")), userRepository.findUserById(rs.getInt("user_id")), LocalDateTime.parse(rs.getString("start_date_time")), Duration.of(rs.getInt("duration"), ChronoUnit.MINUTES), rs.getInt("reservation_type") == 0 ? ReservationType.Singles : ReservationType.Doubles);
             reservation.setId(rs.getInt("id"));
             reservations.add(reservation);
         }
@@ -111,10 +97,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         if (reservation.getId() != null) {
             throw new IllegalArgumentException("Reservation already has ID: " + reservation);
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("INSERT INTO reservation(court_id, user_id, start_date_time, " +
-                             "duration, reservation_type) VALUES (?, ?, ?, ?, ?) ",
-                     Statement.RETURN_GENERATED_KEYS)) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("INSERT INTO reservation(court_id, user_id, start_date_time, " + "duration, reservation_type) VALUES (?, ?, ?, ?, ?) ", Statement.RETURN_GENERATED_KEYS)) {
             prepareStatement(reservation, st);
             st.executeUpdate();
 
@@ -141,9 +124,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         if (reservation.getId() == null) {
             throw new IllegalArgumentException("reservation has null ID: " + reservation);
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("UPDATE reservation SET court_id = ?, user_id = ?," +
-                     " start_date_time = ?, duration = ?, reservation_type = ? WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("UPDATE reservation SET court_id = ?, user_id = ?," + " start_date_time = ?, duration = ?, reservation_type = ? WHERE id = ?")) {
             prepareStatement(reservation, st);
             st.setInt(6, reservation.getId());
             int rowUpdated = st.executeUpdate();
@@ -169,8 +150,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         if (reservation == null) {
             throw new IllegalStateException("Reservation with id: " + id + " does not exist");
         }
-        try (var conn = DriverManager.getConnection(url, username, password);
-             var st = conn.prepareStatement("DELETE FROM reservation WHERE id = ?")) {
+        try (var conn = DriverManager.getConnection(url, username, password); var st = conn.prepareStatement("DELETE FROM reservation WHERE id = ?")) {
             st.setInt(1, id);
             int rowDeleted = st.executeUpdate();
             if (rowDeleted == 0) {

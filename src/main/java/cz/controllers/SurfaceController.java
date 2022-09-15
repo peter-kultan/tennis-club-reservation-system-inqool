@@ -43,7 +43,7 @@ public class SurfaceController {
     }
 
     /**
-     *  Add new surface to system
+     * Add new surface to system
      *
      * @param newSurface surface to be added to system
      * @return added surface and HttpStatus

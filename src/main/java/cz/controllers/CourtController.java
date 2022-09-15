@@ -3,7 +3,7 @@ package cz.controllers;
 import cz.models.Court;
 import cz.payload.CourtPostRequest;
 import cz.services.CourtService;
-    import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

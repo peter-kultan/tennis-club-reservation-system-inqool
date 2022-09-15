@@ -16,8 +16,7 @@ public class ReservationPostRequest {
 
     private final ReservationType reservationType;
 
-    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, String startDate,
-                                  long duration, ReservationType reservationType) {
+    public ReservationPostRequest(Integer courtId, String phoneNumber, String userName, String startDate, long duration, ReservationType reservationType) {
         this.courtId = courtId;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
