@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="fix: fix quotation in toStrings">
+    <list default="true" id="ad3e457e-a052-40f2-901c-6a51ee514511" name="Changes" comment="feat: Add class diagram">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,13 +185,7 @@
       <workItem from="1663078578166" duration="7148000" />
       <workItem from="1663231751398" duration="3101000" />
       <workItem from="1663236853931" duration="21000" />
-    </task>
-    <task id="LOCAL-00028" summary="fix: rename user table in database">
-      <created>1662670937492</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1662670937492</updated>
+      <workItem from="1663236892701" duration="632000" />
     </task>
     <task id="LOCAL-00029" summary="feat: add fins by phone number">
       <created>1662716154053</created>
@@ -529,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663236544929</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="feat: Add class diagram">
+      <created>1663237226257</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1663237226257</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +548,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add equal and hashcode in court" />
     <MESSAGE value="fix: fix findAllCourts function" />
     <MESSAGE value="fix: fix function miss-spelling" />
     <MESSAGE value="fix: fix function name miss-spelling" />
@@ -572,7 +572,8 @@
     <MESSAGE value="feat: add readme" />
     <MESSAGE value="fix: format project" />
     <MESSAGE value="fix: fix quotation in toStrings" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: fix quotation in toStrings" />
+    <MESSAGE value="feat: Add class diagram" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add class diagram" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
