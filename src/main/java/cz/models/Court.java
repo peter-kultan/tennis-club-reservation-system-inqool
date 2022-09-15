@@ -3,7 +3,6 @@ package cz.models;
 import javax.persistence.*;
 import java.util.Objects;
 
-// TODO: fix quotation in toString
 @Entity
 public class Court {
 
@@ -55,7 +54,7 @@ public class Court {
 
     @Override
     public String toString() {
-        return "Court{" + "id=" + id + ", surface=" + surface + ", hourPrice=" + hourPrice + '}';
+        return "Court{" + "id=" + id + ", surface=" + surface + ", hourPrice=" + hourPrice + "}";
     }
 
     @Override
